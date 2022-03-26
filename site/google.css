@@ -1,1 +1,599 @@
-/* fill in styles here */
+:root
+{
+    --vertical-margin: 30px;
+
+    --google-logo-min-height: 92px;
+    --search-bar-min-height: calc(44px + 2px);
+    --search-button-min-height: 36px; /* buttons autoinclude border? */
+    /* total = 174px */
+    --page-middle-box-min-height: calc( var(--google-logo-min-height)
+                                      + var(--search-bar-min-height)
+                                      + var(--search-button-min-height) );
+
+    --google-logo-max-height: calc( var(--google-logo-min-height)
+                                  + var(--vertical-margin) );
+    --search-bar-max-height: calc( var(--search-bar-min-height)
+                                 + var(--vertical-margin) );
+    --search-button-max-height: calc( var(--search-button-min-height)
+                                    + var(--vertical-margin) );
+    /* total = 264px */
+    --page-middle-box-max-height: calc( var(--google-logo-max-height)
+                                      + var(--search-bar-max-height)
+                                      + var(--search-button-max-height) );
+
+    --distance-to-letter-line: -23px;
+
+    --phi: 1.618;
+}
+
+body
+{
+    margin: 0px;
+}
+
+#page-box
+{
+    position: absolute;
+    z-index: -2; /* don't wanna cover those footer links */
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+}
+
+#page-top-box
+{
+    --golden-ratio-start-line: calc( 100vh - 100vh / var(--phi) );
+
+    --center-of-search-bar: calc( var(--search-bar-max-height) / 2 );
+    --offset-to-center-of-search-bar: calc( var(--google-logo-max-height)
+                                          + var(--center-of-search-bar) );
+    height: calc( var(--golden-ratio-start-line)
+                          - var(--offset-to-center-of-search-bar) );
+}
+
+#page-middle-box
+{
+    height: calc( var(--page-middle-box-max-height)
+                - var(--vertical-margin) );
+}
+
+    #div-google-logo
+    {
+        margin-top: var(--vertical-margin);
+    }
+
+        #google-logo
+        {
+            display: block;
+
+            margin-right: auto;
+            margin-left: auto;
+            width: 272px;
+            height: var(--google-logo-min-height);
+        }
+
+    #div-search-bar
+    {
+        margin-top: var(--vertical-margin);
+        margin-right: auto;
+        margin-left: auto;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #DFE1E5;
+        border-radius: 24px;
+        min-width: 582px;
+        max-width: 30.42%;
+        height: calc( var(--search-bar-min-height) - 2px );
+    }
+
+        #div-search-bar:hover
+        {
+            box-shadow: 0px 1px 7px #DCDCDC;
+            border-color: transparent;
+        }
+
+        #div-search-bar:focus-within
+        {
+            box-shadow: 0px 1px 7px #DCDCDC;
+            border-color: transparent;
+        }
+
+        #div-icon-search-bar
+        {
+            display: inline-block;
+
+            border-radius: 100%;
+            width: 44px;
+            height: 44px;
+
+            color: #9AA0A6;
+            fill: currentColor;
+        }
+
+        #input-search-bar
+        {
+            vertical-align: top;
+
+            outline: none;
+            border: none;
+            width: calc(100% - 44px - 6px - 10px);
+            height: 40px;
+
+            background: transparent;
+
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+        }
+
+    #div-search-buttons
+    {
+        margin: auto;
+        margin-top: var(--vertical-margin);
+        width: max-content;
+    }
+
+        .search-button
+        {
+            margin-right: 4px;
+            margin-left: 4px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #F2F2F2;
+            border-radius: 4px;
+            height: var(--search-button-min-height);
+            padding-right: 16px;
+            padding-left: 16px;
+
+            background-color: #F2F2F2;
+            cursor: pointer;
+
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+
+            color: #5F6368
+        }
+
+            .search-button:hover
+            {
+                box-shadow: 0px 3px 4px #F2F2F2;
+                border-color: #C6C6C6;
+
+                color: #222222;
+            }
+
+#page-bottom-box
+{
+    position: fixed;
+    z-index: -1;
+    bottom: 0;
+
+    display: inline-block;
+
+    border-color: #E4E4E4;
+    border-top-style: solid;
+    border-top-width: 1px;
+    width: 100%;
+    height: 40px;
+
+    background-color: #F2F2F2;
+
+    font-size: 14px;
+    line-height: 40px;
+    font-family: Arial, sans-serif;
+    color: #222;
+}
+
+    .footer-link
+    {
+        padding-left: 27px;
+
+        cursor: pointer;
+
+        text-decoration: none;
+        color: #5F6368;
+    }
+
+    .footer-link:hover
+    {
+        text-decoration: underline;
+    }
+
+#footer-right
+    {
+        float: right;
+
+        margin-right: 30px;
+    }
+
+
+
+
+@media screen and (max-width: 582px)
+{
+    #div-search-bar /*-border*/
+    {
+        min-width: 272px;
+        max-width: calc(100% - 2px);
+    }
+}
+
+@media screen and (max-width: 274px)
+{
+    #div-search-bar /*-border*/
+    {
+        min-width: calc( 100% - 2px);
+    }
+}
+
+@media screen and (max-width: 146px)
+{
+    body
+    {
+        overflow: hidden;
+    }
+}
+
+/* footer aligned with search bar buttons */
+@media screen and (max-height: 266px)
+{
+    #div-search-buttons
+    {
+        background: linear-gradient(to right, transparent 45%, #F2F2F2 45% 55%, transparent 55%);
+    }
+
+    #page-bottom-box
+    {
+        height: calc( 40px - (266px - 100vh) );
+
+        line-height: calc( 40px - (266px - 100vh) );
+    }
+}
+
+@media screen and (max-height: 264px) /* middle box height */
+{
+    #page-top-box
+    {
+        height: 0px;
+    }
+
+    #page-middle-box
+    {
+        height: var(--page-middle-box-max-height);
+        height: calc( 100% - var(--vertical-margin) );
+    }
+
+    #div-google-logo
+    {
+        --space-acounted-for: calc( var(--google-logo-min-height)
+                                  + var(--search-bar-max-height)
+                                  + var(--search-button-max-height) );
+        margin-top: calc( 100vh - var(--space-acounted-for) );
+    }
+}
+
+
+/* footer sized to search bar buttons */
+@media screen and (max-height: 262px)
+{
+    #page-bottom-box
+    {
+        height: var(--search-button-min-height);
+
+        line-height: var(--search-button-min-height);
+    }
+}
+
+    /* first vertical margin has been crushed */
+    @media screen and (max-height: 234px)
+    {
+        #div-google-logo
+        {
+            margin-top: 0px;
+        }
+
+        #div-search-bar
+        {
+            --space-acounted-for: calc( var(--google-logo-min-height)
+                                    + var(--search-bar-min-height)
+                                    + var(--search-button-max-height) );
+            margin-top: calc( 100vh - var(--space-acounted-for) );
+        }
+    }
+
+    /* 2nd margin has been crushed 23px past zero to letter line */
+    @media screen and (max-height: 180px)
+    {
+        #div-search-bar
+        {
+            margin-top: var(--distance-to-letter-line);
+        }
+
+        #div-search-buttons
+        {
+            --space-acounted-for: calc( var(--google-logo-min-height)
+                                    + var(--distance-to-letter-line)
+                                    + var(--search-bar-min-height)
+                                    + var(--search-button-min-height) );
+            margin-top: calc( 100vh - var(--space-acounted-for) );
+        }
+    }
+
+    /* 2.5th the easter egg, brought to you by twigpi */
+    #logo
+    {
+        position: absolute;
+
+        opacity: 0;
+        transform: translateX( calc(50vw - 136px) );
+
+        transition: opacity 4s ease-in-out 1s;
+
+
+        width: 272px;
+        height: var(--google-logo-min-height);
+
+        background: linear-gradient(to bottom, #FFF 76%, transparent 90%);
+    }
+
+    #logo:hover
+    {
+        opacity: 1;
+    }
+
+
+    /* 3rd vertical margin crushed */
+    @media screen and (max-height: 150px)
+    {
+        #div-search-buttons
+        {
+            margin-top: 0;
+        }
+
+        #google-logo
+        {
+            --space-acounted-for: calc( var(--google-logo-min-height)
+                                    - var(--distance-to-letter-line)
+                                    + var(--search-button-min-height) );
+            --difference-from-min-space:
+                calc( var(--space-acounted-for) - 100vh );
+
+            height: calc( var(--google-logo-min-height)
+                        - var(--difference-from-min-space) * 4 / 3);
+        }
+
+        #logo
+        {
+            --space-acounted-for: calc( var(--google-logo-min-height)
+                                      - var(--distance-to-letter-line)
+                                      + var(--search-button-min-height) );
+            --difference-from-min-space:
+                calc( var(--space-acounted-for) - 100vh );
+
+            height: calc( var(--google-logo-min-height)
+                        - var(--difference-from-min-space) * 4 / 3);
+        }
+
+        #div-search-bar
+        {
+            --space-acounted-for: calc( var(--google-logo-min-height)
+                                    - var(--distance-to-letter-line)
+                                    + var(--search-button-min-height) );
+            --difference-from-min-space:
+                calc( var(--space-acounted-for) - 100vh );
+
+            margin-top: calc( var(--distance-to-letter-line)
+                            + var(--difference-from-min-space) / 3 )
+        }
+    }
+
+    /* logo partially squished, prevent that dastardly margin collapse */
+    @media screen and (max-height: 128px)
+    {
+        #div-google-logo
+        {
+            padding-bottom: 0.05px;
+        }
+    }
+
+    @media screen and (max-height: 90px)
+    {
+        #div-google-logo
+        {
+            display: none;
+
+            height: 10px;
+        }
+
+        #google-logo
+        {
+            display: none;
+        }
+
+        #logo
+        {
+            display: none;
+        }
+
+        #div-search-bar
+        {
+            margin-top: 0px;
+        }
+
+        #div-search-bar
+        {
+            --offset: calc(50% - 136px);
+            --o: var(--offset);
+
+            --space-acounted-for: calc( var(--search-bar-min-height)
+                                    + var(--search-button-min-height) );
+
+            border-top-width: calc( 100vh - var(--space-acounted-for) );
+            border-top-style: solid;
+            border-top-color: transparent;
+
+            background:
+                linear-gradient(#FFF, #FFF) padding-box,
+                linear-gradient(
+                                to right,
+                                #F2F2F2 0 var(--offset),
+                                #4285F4 var(--offset) calc(var(--o) + 69px),
+                                #EA4325 calc(var(--o) + 69px) calc(var(--o) + 117px),
+                                #FBBC05 calc(var(--o) + 117px) calc(var(--o) + 166px),
+                                #4285F4 calc(var(--o) + 166px) calc(var(--o) + 213px),
+                                #34A853 calc(var(--o) + 213px) calc(var(--o) + 227px),
+                                #EA4325 calc(var(--o) + 227px) calc(var(--o) + 272px),
+                                #F2F2F2 calc(var(--o) + 272px) /*twigpi*/ 100%
+                               ) border-box;
+        }
+
+            #div-search-bar:hover
+            {
+                box-shadow: 0px 1px 7px #DCDCDC;
+                border-bottom-color: #FFF;
+
+                background:
+                linear-gradient(#FFF, #FFF) padding-box,
+                linear-gradient(
+                                to right,
+                                #F2F2F2 0 var(--offset),
+                                #4285F4 var(--offset) calc(var(--o) + 43px),
+                                #27BBE8 calc(var(--o) + 43px) calc(var(--o) + 105px),
+                                #34A853 calc(var(--o) + 105px) calc(var(--o) + 119px),
+                                #FBBC05 calc(var(--o) + 119px) calc(var(--o) + 166px),
+                                #4285F4 calc(var(--o) + 166px) calc(var(--o) + 213px),
+                                #34A853 calc(var(--o) + 213px) calc(var(--o) + 227px),
+                                #EA4325 calc(var(--o) + 227px) calc(var(--o) + 272px),
+                                #F2F2F2 calc(var(--o) + 272px) /*twigpi*/ 100%
+                               ) border-box;
+
+            }
+
+            #div-search-bar:focus-within
+            {
+                box-shadow: 0px 1px 7px #DCDCDC;
+                border-bottom-color: #F2F2F2;
+            }
+    }
+
+    @media screen and (max-height: 83px)
+    {
+        #div-search-bar
+        {
+            border-top-width: 1px;
+        }
+
+        #div-search-buttons
+        {
+            height: calc( 100vh - var(--search-bar-min-height) - 1px );
+        }
+
+        .search-button
+        {
+            height: 100%;
+        }
+
+        #page-bottom-box
+        {
+            height: calc(100vh - var(--search-bar-min-height) );
+
+            line-height: calc(100vh - var(--search-bar-min-height) );
+        }
+    }
+
+    @media screen and (max-height: 65px)
+    {
+        #div-search-buttons
+        {
+            margin-top: calc(100vh - 65px - 1px);
+
+            background: none;
+        }
+
+            .search-button
+            {
+                font-size: calc(14px + 100vh - 65px);
+                /*height: 18px;*/
+            }
+
+        #page-bottom-box
+        {
+            display: none;
+
+            height: 3px;
+
+            line-height: 3px;
+        }
+    }
+
+    @media screen and (max-height: 55px)
+    {
+        #div-search-buttons
+        {
+            margin-top: -11px;
+            height: 8px;
+        }
+
+            .search-button
+            {
+                font-size: 4px;
+            }
+
+        #div-search-bar
+        {
+            height: calc(100vh - 2px - 8px - 1px);
+        }
+
+            #div-icon-search-bar
+            {
+                width: calc(100vh - 8px);
+                height: calc(100vh - 8px);
+            }
+
+                #icon-search-bar
+                {
+                    width: calc(100vh - 8px);
+                    height: calc(100vh - 8px);
+                }
+
+            #input-search-bar
+            {
+                height: calc(100vh - 2px - 8px - 1px - 3px);
+            }
+    }
+
+    @media screen and (max-height: 30px)
+    {
+
+
+        #icon-search-bar
+        {
+            position: absolute;
+            top: 0px;
+        }
+
+        #input-search-bar
+        {
+            font-size: calc( 16px + (100vh - 30px) );
+        }
+
+    @media screen and (max-height: 20px)
+    {
+        body
+        {
+            overflow: hidden;
+        }
+    }
+
+.bordered
+{
+    outline-color: red;
+    outline-width: 1px;
+    outline-style: solid;
+}
+
+.focused
+{
+    outline-color: blue;
+}
