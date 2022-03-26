@@ -565,8 +565,6 @@ body
 
     @media screen and (max-height: 30px)
     {
-
-
         #icon-search-bar
         {
             position: absolute;
@@ -577,6 +575,7 @@ body
         {
             font-size: calc( 16px + (100vh - 30px) );
         }
+    }
 
     @media screen and (max-height: 20px)
     {
@@ -597,3 +596,5 @@ body
 {
     outline-color: blue;
 }
+
+/* edited by twigpi */
